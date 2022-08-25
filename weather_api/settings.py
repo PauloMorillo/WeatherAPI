@@ -128,3 +128,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Weather Variables
+WEATHER_APP_ID = setting_file['weather_api']['app_id']
+WEATHER_BASE_URL = setting_file['weather_api']['base_url']
