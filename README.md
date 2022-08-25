@@ -24,6 +24,9 @@ python manage.py migrate
 ```python
 python manage.py runserver
 ```
+Open browser using port 8000 and you can check the urls working in this API
+
+http://localhost:8000/weather?city=Bogota&country=co
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
