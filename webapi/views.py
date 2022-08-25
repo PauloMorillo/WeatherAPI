@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from utils.weather import WeatherService
 from .serializers import WeatherSerializer
+from rest_framework.exceptions import APIException
 
 
 class WeatherView(APIView):
@@ -13,6 +14,9 @@ class WeatherView(APIView):
         """
         city = self.request.query_params.get('city')
         country = self.request.query_params.get('country')
+
+        if city is None or country is None:
+            raise APIException("city and country param are required as we can see in the following example city=Bogota&country=co")
 
         location_name = f'{city},{country.upper()}'
         weather = WeatherService(location_name)
