@@ -14,7 +14,11 @@ class WeatherView(APIView):
         city = self.request.query_params.get('city')
         country = self.request.query_params.get('country')
 
-        weather = WeatherService(f'{city},{country}')
+        location_name = f'{city},{country.upper()}'
+        weather = WeatherService(location_name)
         result = weather.get_weather()
+        adapted_result = WeatherService.get_relevant_data(result)
+        adapted_result["location_name"] = location_name
+        serialized_data = WeatherSerializer(adapted_result)
 
-        return Response(result)
+        return Response(serialized_data.data)
